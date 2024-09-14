@@ -40,3 +40,10 @@ Replace <your-api-url> with the URL of your Geo DB API and <your-api-key> with y
 - Pagination Component: Provides navigation for paginated data with next and previous page buttons.
 
 ```
+
+
+```bash
+#Bug
+There is a problem with the bounce function when the user navigates to a page such as (4,5,7) and searches for the value in the search box 
+
+```
