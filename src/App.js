@@ -19,24 +19,27 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBox onSearch={handleSearch} />
+      <SearchBox onSearch={handleSearch} loading={loading} />
       <Table data={data} loading={loading} error={error} />
       <div className="footer">
-        {totalPages > 1 && (
+        {totalPages > 1 ? (
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
             onPageChange={handlePageChange}
           />
+        ) : (
+          <div className="pagination"></div>
         )}
         <div className="limit-selector">
-          <input
-            type="number"
-            value={limit}
-            onChange={(e) => handleLimitChange(parseInt(e.target.value, 10))}
-            min="0"
-            max="10"
-          />
+        <input
+              disabled={loading}
+              type="number"
+              value={limit}
+              onChange={(e) => handleLimitChange(parseInt(e.target.value, 10))}
+              min="0"
+              max="10"
+            />
         </div>
       </div>
     </div>

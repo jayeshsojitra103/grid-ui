@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./SearchBox.css";
 
-const SearchBox = ({ onSearch }) => {
+const SearchBox = ({ onSearch, loading }) => {
   const [searchText, setSearchText] = useState("");
   const inputRef = useRef(null);
 
   const handleChange = (e) => {
     setSearchText(e.target.value);
-    onSearch(e.target.value)
+    onSearch(e.target.value);
   };
 
   const handleShortcut = (e) => {
@@ -16,7 +16,6 @@ const SearchBox = ({ onSearch }) => {
       inputRef?.current?.focus();
     }
   };
-
 
   useEffect(() => {
     document.addEventListener("keydown", handleShortcut);
@@ -30,6 +29,7 @@ const SearchBox = ({ onSearch }) => {
     <div class="search-container">
       <input
         type="text"
+        disabled={loading}
         value={searchText}
         onChange={handleChange}
         className="search-input"
